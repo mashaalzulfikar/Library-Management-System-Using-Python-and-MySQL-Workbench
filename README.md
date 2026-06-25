@@ -35,5 +35,7 @@ The system utilizes a relational model connecting entities including **Books**, 
 
 ## Documentation
 For a detailed breakdown of the system architecture, ER diagrams, and implementation logic, please refer to the project report:
+
 [**View project report.pdf**](https://github.com/mashaalzulfikar/Library-Management-System-Using-Python-and-MySQL-Workbench/raw/main/21CS041,%2021CS077,%2021CS105%20DBMS%20CEP.pdf)
+
 *(Note: If the preview fails due to file size, please download the file to view it.)*
