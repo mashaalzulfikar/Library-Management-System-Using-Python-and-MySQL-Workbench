@@ -1,4 +1,4 @@
-# Library Management System Using Python and MySQL Workbench
+# ACID-Compliant Multi-Tenant Library Resource Engine
 
 <img width="2880" height="2160" alt="image" src="https://github.com/user-attachments/assets/f487dde2-9cfe-4608-9ad8-cd38ce45f67d" />
 
