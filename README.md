@@ -1,6 +1,6 @@
 # Library Management System Using Python and MySQL Workbench
 
-<img width="800" height="600" alt="image" src="https://github.com/user-attachments/assets/6c92a6ca-c977-4ed0-a0d2-c85201894cfa" />
+<img width="2880" height="2160" alt="image" src="https://github.com/user-attachments/assets/f487dde2-9cfe-4608-9ad8-cd38ce45f67d" />
 
 
 A comprehensive web-based Library Management System (LMS) developed to digitize and streamline library operations, including book cataloguing, borrowing, and return processes. This project was completed as a Complex Engineering Problem (CEP) for the Database Management Systems course at Mehran University of Engineering and Technology.
