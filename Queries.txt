@@ -1,5 +1,7 @@
+-- Initialize the database
 create database library;
 
+-- Define core entities: Books, Borrowers, Transactions, Genres, and Publishers
 CREATE TABLE IF NOT EXISTS Books (
     BookID INT AUTO_INCREMENT PRIMARY KEY,
     Title VARCHAR(255) NOT NULL,
@@ -15,7 +17,7 @@ CREATE TABLE IF NOT EXISTS Borrowers (
     ContactDetails VARCHAR(255)
 );
 
--- Create Transactions table
+-- Create Transactions table to track book activity
 CREATE TABLE IF NOT EXISTS Transactions (
     TransactionID INT AUTO_INCREMENT PRIMARY KEY,
     BookID INT REFERENCES Books(BookID),
@@ -36,24 +38,27 @@ CREATE TABLE IF NOT EXISTS Publishers (
     PublisherName VARCHAR(100) NOT NULL
 );
 
--- Update Books table
+-- Relate Books to Genres and Publishers via Foreign Keys
 ALTER TABLE Books
 ADD COLUMN GenreID INT,
 ADD COLUMN PublisherID INT,
 ADD CONSTRAINT fk_genre FOREIGN KEY (GenreID) REFERENCES Genres(GenreID),
 ADD CONSTRAINT fk_publisher FOREIGN KEY (PublisherID) REFERENCES Publishers(PublisherID);
 
--- Create BookCopies table
+-- Create BookCopies table for granular tracking of individual book copies
 CREATE TABLE IF NOT EXISTS BookCopies (
     CopyID INT AUTO_INCREMENT PRIMARY KEY,
     BookID INT REFERENCES Books(BookID),
     Available BOOLEAN DEFAULT TRUE,
     UNIQUE(BookID, Available)
 );
+
+-- Switch to the active database and verify data
 use library;
 SELECT * FROM borrowers;
 SELECT * FROM transactions;
--- Insert sample genres
+
+-- Populate catalog metadata: Genres
 INSERT INTO Genres (GenreName) VALUES ('Science Fiction');
 INSERT INTO Genres (GenreName) VALUES ('Mystery');
 INSERT INTO Genres (GenreName) VALUES ('Fantasy');
@@ -68,7 +73,7 @@ INSERT INTO Genres (GenreName) VALUES ('Biography');
 INSERT INTO Genres (GenreName) VALUES ('Self Help');
 INSERT INTO Genres (GenreName) VALUES ('Non Fiction');
 
--- Insert sample publishers
+-- Populate catalog metadata: Publishers
 INSERT INTO Publishers (PublisherName) VALUES ('Random House');
 INSERT INTO Publishers (PublisherName) VALUES ('Penguin Books');
 INSERT INTO Publishers (PublisherName) VALUES ('HarperCollins');
@@ -76,7 +81,7 @@ INSERT INTO Publishers (PublisherName) VALUES ('Plata Publishing');
 INSERT INTO Publishers (PublisherName) VALUES ('Viking Press');
 -- 
 
-
+-- Set up User Authentication and Role-Based Access Control
 CREATE TABLE Users (
     UserID INT AUTO_INCREMENT PRIMARY KEY,
     Username VARCHAR(255) UNIQUE NOT NULL,
@@ -92,6 +97,7 @@ INSERT INTO Users (Username, Password, UserType) VALUES ('librarian', 'librarian
 -- Inserting sample data for student
 INSERT INTO Users (Username, Password) VALUES ('adeel', '123');
 
+-- Extend Borrowers table structure for direct tracking
 ALTER Table borrowers 
 ADD COLUMN BookID INT,
 ADD COLUMN Type VARCHAR(15),
